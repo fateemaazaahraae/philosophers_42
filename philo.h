@@ -1,8 +1,6 @@
 #ifndef PHILO_H
-#define PHILO_H
+# define PHILO_H
 
-# define INT_MAX 2147483647
-# define INT_MIN -2147483648
 # define PHILO_NUM 200
 
 # include <stdio.h>
@@ -12,6 +10,7 @@
 
 typedef struct philo
 {
+    // t_data      *p;
     pthread_t   th;
     int         id;
     int         eat;
@@ -20,9 +19,15 @@ typedef struct philo
     int         meals_num;
 }                t_philo;
 
+typedef struct data
+{
+    t_philo     *philos;
+    int         philo_num;
+}   t_data;
 
 int	    ft_atoi(char *str);
-void    ft_putstr(char *str, int exit_num);
-void    check_args(char **av);
+void    ft_print_err(char *str, int i);
+int    check_args(char **av);
+void    init_program(t_data *p, char **av);
 
 #endif
