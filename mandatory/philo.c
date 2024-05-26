@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbazaz <fbazaz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 16:25:38 by fbazaz            #+#    #+#             */
-/*   Updated: 2024/05/25 11:23:37 by fbazaz           ###   ########.fr       */
+/*   Updated: 2024/05/26 08:48:04 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int main(int ac, char **av)
         return(printf("Enter 5 or 6 arguments\n"));
     if (check_args(av))
         return (1);
-    init_program(&p, av);
+    if (init_program(&p, av, ac))
+        return (1);
     return (0);
 }
