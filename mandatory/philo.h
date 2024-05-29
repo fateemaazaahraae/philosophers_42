@@ -10,7 +10,7 @@
 
 typedef struct philo
 {
-    // t_data      *p;
+    t_data      *p;
     pthread_t   th;
     int         id;
     pthread_mutex_t *r_fork;
@@ -30,7 +30,9 @@ typedef struct data
 
 int	    ft_atoi(char *str);
 void    ft_print_err(char *str, int i);
-int    check_args(char **av);
-int    init_program(t_data *p, char **av, int ac);
+int     check_args(char **av);
+int     init_program(t_data *p, char **av, int ac);
+void    *routine(void *data);
+int    init_forks(t_data *p);
 
 #endif
