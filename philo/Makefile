@@ -6,7 +6,7 @@
 #    By: fbazaz <fbazaz@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/29 18:35:10 by fbazaz            #+#    #+#              #
-#    Updated: 2024/05/29 18:41:30 by fbazaz           ###   ########.fr        #
+#    Updated: 2024/05/30 09:21:25 by fbazaz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ all: $(NAME)
 $(NAME) : $(OBJ)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 	@echo "Philo compiled successfully!"
+	@rm -rf $(OBJ)
 	
 clean:
 	rm -rf $(OBJ)

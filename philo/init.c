@@ -6,7 +6,7 @@
 /*   By: fbazaz <fbazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 10:41:54 by fbazaz            #+#    #+#             */
-/*   Updated: 2024/05/29 18:39:23 by fbazaz           ###   ########.fr       */
+/*   Updated: 2024/05/30 09:18:02 by fbazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@ int    init_forks(t_data *p)
 {
     int i;
 
+    i = -1;
+    while (++i < p->philo_num)
+    {
+        pthread_mutex_init(&p->philos[i].lock, NULL);
+        pthread_mutex_init(&p->philos[i].message_lock, NULL);
+    }
     i = -1;
     while (++i < p->philo_num)
         if (pthread_mutex_init(&p->fork[i], NULL))
@@ -54,6 +60,7 @@ void    init_philos(t_data *p)
         p->philos[i].p = p;
         p->philos[i].id = i;
         p->philos[i].meal_counter = 0;
+        p->philos[i].is_eating = 0;
     }
 }
 

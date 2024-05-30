@@ -21,8 +21,12 @@ typedef struct philo
     pthread_t       th;
     int             id;
     int             meal_counter;
+    int             is_eating;
     pthread_mutex_t *r_fork;
     pthread_mutex_t *l_fork;
+    u_int64_t       last_meal;
+    pthread_mutex_t lock;
+    pthread_mutex_t message_lock;
 }                   t_philo;
 
 typedef struct data
@@ -49,5 +53,6 @@ void    message(char *str, t_philo *philo);
 void    take_forks(t_philo *philo);
 void    drop_forks(t_philo *philo);
 int     init_threads(t_data *p);
+u_int64_t	get_current_time(void);
 
 #endif
