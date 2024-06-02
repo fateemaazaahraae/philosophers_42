@@ -5,15 +5,15 @@
 #                                                     +:+ +:+         +:+      #
 #    By: fbazaz <fbazaz@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/05/29 18:35:10 by fbazaz            #+#    #+#              #
-#    Updated: 2024/05/30 09:21:25 by fbazaz           ###   ########.fr        #
+#    Created: 2024/06/02 10:27:12 by fbazaz            #+#    #+#              #
+#    Updated: 2024/06/02 10:27:45 by fbazaz           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRC = init.c main.c philo.c routine.c utils.c
+SRC = init.c main.c parcing.c routine.c threads.c utils.c
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
