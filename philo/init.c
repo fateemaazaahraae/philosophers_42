@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbazaz <fbazaz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 09:30:45 by fbazaz            #+#    #+#             */
-/*   Updated: 2024/06/03 10:52:10 by fbazaz           ###   ########.fr       */
+/*   Updated: 2024/06/05 16:30:36 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 int	store_data(t_data *data, char **av)
 {
 	data->finish = 0;
-	data->n_philo = ft_atoi(av[1]);
-	data->t_die = (u_int64_t)ft_atoi(av[2]);
-	data->t_eat = (u_int64_t)ft_atoi(av[3]);
-	data->t_sleep = (u_int64_t)ft_atoi(av[4]);
+	data->n_philo = (unsigned long long)ft_atoi(av[1]);
+	data->t_die = (unsigned long long)ft_atoi(av[2]);
+	data->t_eat = (unsigned long long)ft_atoi(av[3]);
+	data->t_sleep = (unsigned long long)ft_atoi(av[4]);
 	data->death_flag = 0;
 	if (av[5])
 		data->n_meals = ft_atoi(av[5]);

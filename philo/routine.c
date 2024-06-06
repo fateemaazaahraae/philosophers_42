@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   routine.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbazaz <fbazaz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 10:10:09 by fbazaz            #+#    #+#             */
-/*   Updated: 2024/06/03 10:59:04 by fbazaz           ###   ########.fr       */
+/*   Updated: 2024/06/05 17:17:35 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,12 @@ void	take_forks(t_philo *philo)
 {
 	pthread_mutex_lock(philo->left_fork);
 	message(FORK, philo);
+	if (philo->data->n_philo == 1)
+	{
+		ft_usleep(philo->data->t_die);
+		message(DIED, philo);
+		return ;
+	}
 	pthread_mutex_lock(philo->right_fork);
 	message(FORK, philo);
 }
@@ -28,11 +34,11 @@ void	drop_forks(t_philo *philo)
 
 void	message(char *str, t_philo *philo)
 {
-	u_int64_t	time;
+	unsigned long long	time;
 
 	pthread_mutex_lock(&philo->message);
 	time = get_current_time() - philo->start;
-	if (strcmp(str, "DIED") == 0 && philo->data->death_flag == 0)
+	if (strcmp(str, DIED) == 0 && philo->data->death_flag == 0)
 	{
 		printf("%llu %d %s", time, philo->id, str);
 		philo->data->death_flag = 1;
@@ -47,10 +53,10 @@ void	go_to_eat(t_philo *philo)
 	take_forks(philo);
 	pthread_mutex_lock(&philo->lock);
 	philo->is_eating = 1;
-	philo->time_die = get_current_time() + philo->data->t_die;
 	message(EAT, philo);
 	philo->eat_count++;
 	ft_usleep(philo->data->t_eat);
+	philo->time_die = get_current_time() + philo->data->t_die;
 	philo->is_eating = 0;
 	pthread_mutex_unlock(&philo->lock);
 	drop_forks(philo);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbazaz <fbazaz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 09:56:23 by fbazaz            #+#    #+#             */
-/*   Updated: 2024/06/03 14:21:14 by fbazaz           ###   ########.fr       */
+/*   Updated: 2024/06/05 17:37:53 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,15 +30,14 @@ void	*observer(void *arg)
 void	*func(void *arg)
 {
 	t_philo	*philo;
-	int		i;
 
 	philo = (t_philo *)arg;
-	i = -1;
 	while (philo->data->death_flag == 0)
 	{
 		pthread_mutex_lock(&philo->data->data_lock);
 		if (get_current_time() > philo->time_die && philo->is_eating == 0)
 		{
+			printf("time : %llu id %i\n", get_current_time() - philo->time_die, philo->id);
 			message(DIED, philo);
 			philo->data->death_flag = 1;
 		}
@@ -59,12 +58,12 @@ void	*routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	if (philo->id % 2 != 0)
+		usleep(100);
 	philo->start = get_current_time();
 	philo->time_die = get_current_time() + philo->data->t_die;
 	if (pthread_create(&philo->th2, NULL, func, philo))
 		return ((void *)1);
-	if (philo->id % 2 != 0)
-		usleep(50);
 	while (philo->data->death_flag == 0)
 	{
 		go_to_eat(philo);
