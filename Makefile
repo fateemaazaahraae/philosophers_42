@@ -3,32 +3,30 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fbazaz <fbazaz@student.42.fr>              +#+  +:+       +#+         #
+#    By: tiima <tiima@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/06/02 10:27:12 by fbazaz            #+#    #+#              #
-#    Updated: 2024/06/02 10:27:45 by fbazaz           ###   ########.fr        #
+#    Created: 2024/06/25 20:21:03 by tiima             #+#    #+#              #
+#    Updated: 2024/06/25 20:26:52 by tiima            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRC = init.c main.c parcing.c routine.c threads.c utils.c
+SRC = actions.c  main.c    parcing.c  routine.c  track.c init.c threads.c  utils.c
+
 OBJ = $(SRC:.c=.o)
 
-all: $(NAME)
+all : $(NAME)
 
 $(NAME) : $(OBJ)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
-	@echo "Philo compiled successfully!"
-	@rm -rf $(OBJ)
-	
-clean:
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	@clear
+
+clean : $(OBJ)
 	rm -rf $(OBJ)
 
-fclean: clean
+fclean : clean
 	rm -rf $(NAME)
 
-re: fclean all
-
-.PHONY: all clean fclean re
+re : fclean all

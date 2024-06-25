@@ -6,7 +6,7 @@
 /*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 10:26:01 by fbazaz            #+#    #+#             */
-/*   Updated: 2024/06/05 16:29:09 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/25 20:19:38 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int    ft_usleep(size_t milliseconds)
     return (0);
 }
 
-unsigned long long	get_current_time(void)
+long long	get_current_time(void)
 {
 	struct timeval	tv;
 
