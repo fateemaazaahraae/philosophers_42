@@ -6,7 +6,7 @@
 /*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 19:51:40 by tiima             #+#    #+#             */
-/*   Updated: 2024/06/26 14:01:21 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/26 14:45:50 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void    *check_death(void *arg)
             message("IS DIED\n", &data->philo[i]);
             kill_all_philos(data);
             data->death = 1;
+            clean_all(data);
             break ;
         }
         i++;

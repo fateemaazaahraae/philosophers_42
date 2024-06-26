@@ -6,7 +6,7 @@
 /*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:06:09 by tiima             #+#    #+#             */
-/*   Updated: 2024/06/26 00:16:58 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/26 14:41:53 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ typedef struct s_data
     pthread_mutex_t     data_lock;
 }                       t_data;
 
+void    clean_all(t_data *data);
 
 /* --parcing.c-- */
 int ft_check(char *str);
