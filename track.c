@@ -6,7 +6,7 @@
 /*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 19:51:40 by tiima             #+#    #+#             */
-/*   Updated: 2024/06/25 23:51:53 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/26 14:01:21 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int is_philo_death(t_philo *philo)
     pthread_mutex_lock(&philo->mtx);
     if (get_status(philo) == DIED)
     {
+        printf("hello\n");
         pthread_mutex_unlock(&philo->mtx);
         return (1);
     }
@@ -47,7 +48,7 @@ void    *check_death(void *arg)
     i = 0;
     while (i < data->num_philo)
     {
-        if (is_philo_death(&data->philo[i]))
+        if (is_philo_death(&data->philo[i]) && get_status(&data->philo[i]) != EATING) //modifiet fhad l condition !!
         {
             message("IS DIED\n", &data->philo[i]);
             kill_all_philos(data);
@@ -77,7 +78,7 @@ void    *check_meals(void *arg)
         i++;
         if (counter == data->num_philo)
         {
-            kill_all_philos(data);
+            //kill_all_philos(data);
             data->death = 1;
             break;
         }

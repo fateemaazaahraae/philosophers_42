@@ -6,7 +6,7 @@
 /*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:06:09 by tiima             #+#    #+#             */
-/*   Updated: 2024/06/25 20:20:21 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/26 00:16:58 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <sys/time.h>
+# include <string.h>
 
 typedef enum status
 {

@@ -6,11 +6,21 @@
 /*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 17:40:58 by tiima             #+#    #+#             */
-/*   Updated: 2024/06/25 20:26:13 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/26 13:58:49 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "philo.h"
+
+int check_all(t_data *data)
+{
+    while (1)
+    {
+        if (data->death == 1)
+            return (1);
+    }
+    return (0);
+}
 
 int threads(t_data *data)
 {
@@ -30,7 +40,12 @@ int threads(t_data *data)
             if (pthread_create(&data->th2, NULL, check_meals, data))
                 return (printf("ERROR WHILE CREATING CHECK_MEALS THREAD !!\n"));
         }
+        if (check_all(data))
+            return (1);
     }
+    i = -1;
+    while (++i < data->num_philo)
+        printf("%i\n", data->philo[i].status);
     if (ft_join(data))
         return (1);
     return (0);
