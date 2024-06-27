@@ -6,7 +6,7 @@
 /*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 17:53:26 by tiima             #+#    #+#             */
-/*   Updated: 2024/06/26 00:17:57 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/27 13:40:30 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,16 @@ void    set_status(t_philo *philo, t_status etat)
 void    message(char *str, t_philo *philo)
 {
     pthread_mutex_lock(&philo->data->data_lock);
-    printf("%llu %i %s", get_current_time() - philo->data->start_time, philo->id, str);
+    if (!strcmp(str, "IS DIED\n") && get_status(philo) == DIED)
+    {
+        printf("%llu %i %s", get_current_time() - philo->data->start_time, philo->id, str);
+        philo->data->death = 1;
+        kill_all_philos(philo->data);
+        pthread_mutex_unlock(&philo->data->data_lock);
+        return ;
+    }
+    if (get_status(philo) != DIED)
+        printf("%llu %i %s", get_current_time() - philo->data->start_time, philo->id, str);
     pthread_mutex_unlock(&philo->data->data_lock);
 }
 

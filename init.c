@@ -6,7 +6,7 @@
 /*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:34:52 by tiima             #+#    #+#             */
-/*   Updated: 2024/06/25 20:36:42 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/27 13:24:15 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void    init_philo(t_data *data)
         pthread_mutex_init(&data->philo[i].set_lock, NULL);
         pthread_mutex_init(&data->philo[i].lock, NULL);
         pthread_mutex_init(&data->philo[i].mtx, NULL);
+        pthread_mutex_init(&data->philo[i].sleep_lock, NULL);
         /* init mutex */
     }
     i = -1;

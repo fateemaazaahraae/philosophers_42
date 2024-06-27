@@ -6,7 +6,7 @@
 /*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/25 19:51:40 by tiima             #+#    #+#             */
-/*   Updated: 2024/06/26 14:45:50 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/27 13:35:32 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int is_philo_death(t_philo *philo)
         pthread_mutex_unlock(&philo->mtx);
         return (1);
     }
-    else if (get_status(philo) != EATING && ((get_current_time() - philo->last_eat) >= philo->data->t_die))
+    else if (get_status(philo) != EATING && get_status(philo) != SLEEPING && ((get_current_time() - philo->last_eat) >= philo->data->t_die))
     {
         pthread_mutex_unlock(&philo->mtx);
         return (1);
