@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tiima <tiima@student.42.fr>                +#+  +:+       +#+         #
+#    By: ali-akouhar <ali-akouhar@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/25 20:21:03 by tiima             #+#    #+#              #
-#    Updated: 2024/06/25 20:26:52 by tiima            ###   ########.fr        #
+#    Updated: 2024/06/26 16:10:17 by ali-akouhar      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ $(NAME) : $(OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 	@clear
 
-clean : $(OBJ)
+clean :
 	rm -rf $(OBJ)
 
 fclean : clean

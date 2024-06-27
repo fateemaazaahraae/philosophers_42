@@ -6,7 +6,7 @@
 /*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 17:40:58 by tiima             #+#    #+#             */
-/*   Updated: 2024/06/26 13:58:49 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/27 16:04:25 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,6 @@ int threads(t_data *data)
         if (check_all(data))
             return (1);
     }
-    i = -1;
-    while (++i < data->num_philo)
-        printf("%i\n", data->philo[i].status);
     if (ft_join(data))
         return (1);
     return (0);

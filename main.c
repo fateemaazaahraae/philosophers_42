@@ -6,29 +6,11 @@
 /*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:05:53 by tiima             #+#    #+#             */
-/*   Updated: 2024/06/26 14:45:17 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/27 16:07:34 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void    clean_all(t_data *data)
-{
-    int i;
-
-    i = 0;
-    while (++i < data->num_philo)
-    {
-        pthread_mutex_destroy(&data->philo[i].get_lock);
-        pthread_mutex_destroy(&data->philo[i].set_lock);
-        pthread_mutex_destroy(&data->philo[i].lock);
-        pthread_mutex_destroy(&data->philo[i].mtx);
-        pthread_mutex_destroy(&data->forks[i]);
-    }
-    pthread_mutex_destroy(&data->data_lock);
-    free(data->philo);
-    free(data->forks);
-}
 
 int main(int ac, char **av)
 {
@@ -42,6 +24,6 @@ int main(int ac, char **av)
         return (1);
     if (threads(&data))
         return (1);
-    //clean_all(&data);
+    //clean_up(&data);
     return (0);
 }

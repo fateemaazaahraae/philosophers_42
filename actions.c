@@ -6,7 +6,7 @@
 /*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 18:07:28 by tiima             #+#    #+#             */
-/*   Updated: 2024/06/27 13:33:15 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/25 20:36:58 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,11 @@ int eating(t_philo *philo)
 
 int sleeping(t_philo *philo)
 {
-    pthread_mutex_lock(&philo->sleep_lock);
     set_status(philo, SLEEPING);
     if (get_status(philo) == DIED)
         return (1);
     message("IS SLEEPING\n", philo);
     ft_usleep(philo->data->t_sleep);
-    pthread_mutex_unlock(&philo->sleep_lock);
     return (0);
 }
 

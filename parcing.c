@@ -6,7 +6,7 @@
 /*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:21:19 by tiima             #+#    #+#             */
-/*   Updated: 2024/06/26 14:30:26 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/25 20:24:16 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int check_args(char **av)
         return (printf("INVALID TIME TO EAT !!\n"));
     if (ft_atoi(av[4]) < 0 || ft_check(av[4]))
         return (printf("INVALID TIME TO SLEEP !!\n"));
-    if (av[5] && (ft_atoi(av[5]) <= 0 || ft_check(av[5])))
+    if (av[5] && (ft_atoi(av[5]) < 0 || ft_check(av[5])))
         return (printf("INVALID NUM OF MEALS !!\n"));
     return (0);
 }

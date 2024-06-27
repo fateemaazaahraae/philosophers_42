@@ -6,7 +6,7 @@
 /*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:06:09 by tiima             #+#    #+#             */
-/*   Updated: 2024/06/27 13:24:04 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/26 00:16:58 by tiima            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef struct philo
     pthread_mutex_t     set_lock;
     pthread_mutex_t     lock;
     pthread_mutex_t     mtx;
-    pthread_mutex_t     sleep_lock;
 }                       t_philo;
 
 typedef struct s_data
@@ -62,7 +61,6 @@ typedef struct s_data
     pthread_mutex_t     data_lock;
 }                       t_data;
 
-void    clean_all(t_data *data);
 
 /* --parcing.c-- */
 int ft_check(char *str);
