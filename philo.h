@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbazaz <fbazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:06:09 by tiima             #+#    #+#             */
-/*   Updated: 2024/06/26 00:16:58 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/30 12:36:52 by fbazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,6 @@ typedef struct philo
     pthread_t           thread;
     pthread_mutex_t     *r_fork;
     pthread_mutex_t     *l_fork;
-    pthread_mutex_t     get_lock;
-    pthread_mutex_t     set_lock;
-    pthread_mutex_t     lock;
-    pthread_mutex_t     mtx;
 }                       t_philo;
 
 typedef struct s_data
@@ -59,8 +55,14 @@ typedef struct s_data
     long long           t_die;
     long long           start_time;
     pthread_mutex_t     data_lock;
+    pthread_mutex_t     get_lock;
+    pthread_mutex_t     set_lock;
+    pthread_mutex_t     eat_lock;
+    pthread_mutex_t     time_lock;
+    pthread_mutex_t     death_lock;
 }                       t_data;
 
+void    clean_up(t_data *data);
 
 /* --parcing.c-- */
 int ft_check(char *str);
@@ -79,8 +81,12 @@ int ft_join(t_data *data);
 /* --routine.c-- */
 void    *routine(void *arg);
 void    message(char *str, t_philo *philo);
+
+/* --get_set.c-- */
 t_status    get_status(t_philo *philo);
 void    set_status(t_philo *philo, t_status etat);
+void    set_value(t_data *data, int i);
+int get_value(t_data *data);
 
 /* --actions.c-- */
 int eating(t_philo *philo);

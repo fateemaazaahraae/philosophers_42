@@ -3,24 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbazaz <fbazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 17:40:58 by tiima             #+#    #+#             */
-/*   Updated: 2024/06/27 16:04:25 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/30 12:41:51 by fbazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "philo.h"
-
-int check_all(t_data *data)
-{
-    while (1)
-    {
-        if (data->death == 1)
-            return (1);
-    }
-    return (0);
-}
 
 int threads(t_data *data)
 {
@@ -30,7 +20,7 @@ int threads(t_data *data)
     data->start_time = get_current_time();
     while (++i < data->num_philo)
         if (pthread_create(&data->philo[i].thread, NULL, routine, &data->philo[i]))
-            return (printf("ERROR WHILE CREATING THREADS !!\n"));
+            return (clean_up(data), printf("ERROR WHILE CREATING THREADS !!\n"));
     if (data->num_philo > 1)
     {
         if (pthread_create(&data->th1, NULL, check_death, data))
@@ -40,8 +30,8 @@ int threads(t_data *data)
             if (pthread_create(&data->th2, NULL, check_meals, data))
                 return (printf("ERROR WHILE CREATING CHECK_MEALS THREAD !!\n"));
         }
-        if (check_all(data))
-            return (1);
+        // if (check_all(data))
+        //     return (1);
     }
     if (ft_join(data))
         return (1);

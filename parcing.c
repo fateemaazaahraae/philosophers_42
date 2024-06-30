@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parcing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tiima <tiima@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fbazaz <fbazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:21:19 by tiima             #+#    #+#             */
-/*   Updated: 2024/06/25 20:24:16 by tiima            ###   ########.fr       */
+/*   Updated: 2024/06/29 14:53:59 by fbazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,21 @@ int ft_check(char *str)
 
 int check_args(char **av)
 {
+    /* int     i;
+    int     j;
+    char    **arg;
+
+    i = 1;
+    while (av[i])
+    {
+        arg = ft_split(av[i], ' ');
+        if (!arg || !arg[0])
+            printf("INVALID ARGUMENT !!\n");
+        j = 0;
+        while (arg[j]){}
+    }
+ */
+
     if (ft_atoi(av[1]) > 200 || ft_atoi(av[1]) <= 0 || ft_check(av[1]))
         return (printf("INVALID NUM OF PHILOSOPHERS !!\n"));
     if (ft_atoi(av[2]) < 0 || ft_check(av[2]))
