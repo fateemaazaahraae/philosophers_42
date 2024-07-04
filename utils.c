@@ -6,20 +6,24 @@
 /*   By: fbazaz <fbazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 10:26:01 by fbazaz            #+#    #+#             */
-/*   Updated: 2024/06/29 14:53:08 by fbazaz           ###   ########.fr       */
+/*   Updated: 2024/07/03 12:52:26 by fbazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int    ft_usleep(size_t milliseconds)
+int	ft_usleep(size_t milliseconds, t_philo *philo)
 {
-    long long    start;
+	long long	start;
 
-    start = get_current_time();
-    while ((size_t)(get_current_time() - start) < milliseconds)
-        usleep(100);
-    return (0);
+	start = get_current_time();
+	while ((size_t)(get_current_time() - start) < milliseconds)
+	{
+		if (get_status(philo) == DIED || get_finish(philo->data))
+			return (1);
+		usleep(100);
+	}
+	return (0);
 }
 
 long long	get_current_time(void)
@@ -31,16 +35,18 @@ long long	get_current_time(void)
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
 }
 
-int	ft_atoi(char *str)
+long long	ft_atoi(char *str)
 {
 	int		i;
-	long	result;
 	int		sign;
+	long long	res;
 
 	i = 0;
-	result = 0;
 	sign = 1;
-	while (str[i] == '-' || str[i] == '+')
+	res = 0;
+	while (str[i] == ' ' || str[i] == '\t')
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
 			sign *= -1;
@@ -48,8 +54,10 @@ int	ft_atoi(char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		result = result * 10 + (str[i] - '0');
+		res = res * 10 + (str[i] - '0');
+		if ((res * sign) >= INT_MAX || (res * sign) <= INT_MIN)
+			return (-42);
 		i++;
 	}
-	return ((int)(result * sign));
+	return (res * sign);
 }
