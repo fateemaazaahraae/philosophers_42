@@ -74,5 +74,6 @@ int	thinking(t_philo *philo)
 	if (get_status(philo) == DIED || get_finish(philo->data))
 		return (1);
 	message("is thinking\n", philo);
+	usleep(700);
 	return (0);
 }

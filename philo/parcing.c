@@ -6,7 +6,7 @@
 /*   By: fbazaz <fbazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:21:19 by tiima             #+#    #+#             */
-/*   Updated: 2024/07/01 10:18:29 by fbazaz           ###   ########.fr       */
+/*   Updated: 2024/07/27 09:10:23 by fbazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	check_digit(char *str)
 		if ((str[i] < '0' || str[i] > '9') && str[i] != '-' && str[i] != '+'
 			&& str[i] != ' ' && str[i] != '\t')
 			return (printf("Error\n"));
-		if ((str[i] == ' ' || str[i] == '\t') && (i != 0 && str[i + 1] && str[i - 1] != '\t' && str[i - 1] != ' '))
+		if ((str[i] == ' ' || str[i] == '\t') && (i != 0 && str[i + 1] && str[i
+					- 1] != '\t' && str[i - 1] != ' '))
 			return (printf("Error\n"));
 		i++;
 	}

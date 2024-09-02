@@ -6,7 +6,7 @@
 /*   By: fbazaz <fbazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:06:09 by tiima             #+#    #+#             */
-/*   Updated: 2024/07/03 12:53:29 by fbazaz           ###   ########.fr       */
+/*   Updated: 2024/07/27 10:18:11 by fbazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,9 +110,9 @@ int					get_finish(t_data *data);
 void				set_finish(t_data *data, int i);
 
 /* --get_set2.c-- */
-int	get_finish(t_data *data);
-void	set_finish(t_data *data, int i);
-int	get_eat(t_philo *philo);
-void	set_eat(t_philo *philo);
+int					get_finish(t_data *data);
+void				set_finish(t_data *data, int i);
+int					get_eat(t_philo *philo);
+void				set_eat(t_philo *philo);
 
 #endif

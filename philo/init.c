@@ -6,7 +6,7 @@
 /*   By: fbazaz <fbazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:34:52 by tiima             #+#    #+#             */
-/*   Updated: 2024/07/01 11:20:55 by fbazaz           ###   ########.fr       */
+/*   Updated: 2024/07/27 10:21:27 by fbazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,6 @@ int	init_forks(t_data *data)
 	while (++i < data->num_philo)
 		if (pthread_mutex_init(&data->forks[i], NULL))
 			return (printf("ERROR WHILE INITIALIZING FORKS !!\n"));
-	if (pthread_mutex_init(&data->data_lock, NULL))
-	{
-		i = -1;
-		while (++i < data->num_philo)
-			pthread_mutex_destroy(&data->forks[i]);
-		return (printf("ERROR WHILE INITIALIZE LOCK MUTEX !!\n"));
-	}
 	pthread_mutex_init(&data->status_lock, NULL);
 	pthread_mutex_init(&data->eat_lock, NULL);
 	pthread_mutex_init(&data->data_lock, NULL);
@@ -65,18 +58,19 @@ int	init(t_data *data, char **av)
 	data->t_die = ft_atoi(av[2]);
 	data->t_eat = ft_atoi(av[3]);
 	data->t_sleep = ft_atoi(av[4]);
-	if (data->num_philo < 0 || data->t_die < 0 || data->t_eat < 0 || data->t_sleep < 0)
+	if (data->num_philo < 0 || data->num_philo > 200 || data->t_die < 0
+		|| data->t_eat < 0 || data->t_sleep < 0)
 		return (printf("Error\n"));
 	if (av[5])
 	{
 		data->num_meals = ft_atoi(av[5]);
-		if (data->num_meals == 0)
+		if (data->num_meals <= 0)
 			return (printf("Error\n"));
 	}
 	else
 		data->num_meals = -1;
 	if (init_forks(data))
-		return (free(data->forks), free(data->philo), 1);
+		return (1);
 	init_philo(data);
 	return (0);
 }

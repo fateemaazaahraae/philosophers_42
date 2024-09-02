@@ -6,7 +6,7 @@
 /*   By: fbazaz <fbazaz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 16:05:53 by tiima             #+#    #+#             */
-/*   Updated: 2024/07/03 12:57:28 by fbazaz           ###   ########.fr       */
+/*   Updated: 2024/07/27 10:16:33 by fbazaz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,12 @@ void	clean_up(t_data *data)
 	i = -1;
 	pthread_mutex_destroy(&data->status_lock);
 	pthread_mutex_destroy(&data->eat_lock);
-	pthread_mutex_destroy(&data->death_lock);
-	while (++i < data->num_philo)
-	{
-		pthread_mutex_destroy(&data->forks[i]);
-	}
 	pthread_mutex_destroy(&data->data_lock);
-	free(data->philo);
-	free(data->forks);
+	pthread_mutex_destroy(&data->death_lock);
+	pthread_mutex_destroy(&data->time_lock);
+	pthread_mutex_destroy(&data->finish_lock);
+	while (++i < data->num_philo)
+		pthread_mutex_destroy(&data->forks[i]);
 }
 
 int	main(int ac, char **av)
@@ -44,4 +42,3 @@ int	main(int ac, char **av)
 	}
 	return (0);
 }
-// last modification : zedt wa7ed chert f ft_usleep cuz of ./philo 3 300 100 8888888 !!!

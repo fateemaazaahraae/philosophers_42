@@ -37,8 +37,8 @@ long long	get_current_time(void)
 
 long long	ft_atoi(char *str)
 {
-	int		i;
-	int		sign;
+	int			i;
+	int			sign;
 	long long	res;
 
 	i = 0;
